@@ -2,8 +2,8 @@
   <div id="app">
     <TheHeader></TheHeader>
     <div class="d-flex flex-row">
-      <Shop class="w-75"></Shop>
-      <Cart class="w-25"></Cart>
+      <Shop class="col-sm-9"></Shop>
+      <Cart class="col-sm-3"></Cart>
     </div>
   </div>
 </template>

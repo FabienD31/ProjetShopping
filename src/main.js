@@ -39,9 +39,22 @@ export const eventBus = new Vue({
         img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7ekQ3gBH4qgpA_rFjIi5BRHelutd--Q0xhf76XENxHC_gpsIZA',
         title: 'MacBook Air',
         description: `Quand nous avons créé le MacBook, nous avons tout simplement tenté l'impossible. C'est le plus fin et le plus léger de nos ordinateurs portables`,
-        price: '1200 $'
+        price: 1200
       },
-    ]
+    ],
+    cart: []
+  },
+  methods: {
+    addProductInCart(product) {
+      if(!this.cart.find(item => item.id === product.id)){//permet de vérifier si un produit à été ajouté 2 fois//
+        this.cart = [...this.cart, product]; //créer un nouveau tableau de panier pour y ajouter à la fin un produit//
+        this.$emit('update:cart', this.cart);// permet d'écouter l'evenement update dans le panier//
+      }
+    },
+    removeProductToCart(item) {
+      this.cart = this.cart.slice().filter(i => i.id !== item.id);//slice() copie le panier et filter() selectionne l'element à supprimer grace à son id
+      this.$emit('update:cart',this.cart);
+    }
   }
 });
 

@@ -12,16 +12,22 @@
         </div>
         <div class="d-flex flex-row justify-content-between align-items-center">
           <p class="m-0">{{product.price}}</p>
-          <button class="btn btn-primary btn-sm">Acheter</button>
+          <button @click="addProductInCart" class="btn btn-primary btn-sm">Acheter</button>
         </div> 
       </div>
 </template>
 
 <script>
+import {eventBus} from "../../main"
 
 export default {
  props: ['product'],
-}
+ methods: {
+   addProductInCart() {
+     eventBus.addProductInCart({...this.product}) // Cette expression permet de copier toutes les propriétés d'un objet dans un nouvel objet littéral grâce à ES6. = spread(object)//
+   }
+ }
+};
 
 </script>
 
