@@ -6,8 +6,7 @@
 
 <script>
 import ShopProductList from "./ShopProductList.vue";
-import {eventBus} from "../../main";
-
+import { eventBus } from '../../../../main';
 export default {
   components: {
     ShopProductList
