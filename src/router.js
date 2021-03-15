@@ -5,7 +5,7 @@ import User from './components/features/User/User'
 
 Vue.use(VueRouter);
 
-export const router = new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '', redirect:'/shop' },
@@ -14,3 +14,5 @@ export const router = new VueRouter({
     { path: '*', redirect:'/shop'},
   ]
 });
+
+export default router;
