@@ -6,22 +6,21 @@
 
 <script>
 import ShopProductList from "./ShopProductList.vue";
-import { eventBus } from '../../../../main';
+import { eventBus } from "../../../../main";
 export default {
   components: {
-    ShopProductList
+    ShopProductList,
   },
   data() {
-    return {products: []} 
+    return { products: [] };
   },
   created() {
     this.products = eventBus.products;
-    eventBus.$on('update:products', (products) => {this.products = products})
-  }
-}
-
+    eventBus.$on("update:products", (products) => {
+      this.products = products;
+    });
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

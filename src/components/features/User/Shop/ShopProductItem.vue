@@ -11,7 +11,7 @@
       <p>{{ product.description }}</p>
     </div>
     <div class="d-flex flex-row justify-content-between align-items-center">
-      <p class="m-0">{{ product.price }}</p>
+      <p class="m-0">{{ product.price | price }}</p>
       <button @click="addProductInCart" class="btn btn-primary btn-sm">
         Acheter
       </button>

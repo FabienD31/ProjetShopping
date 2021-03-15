@@ -1,7 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
+import * as filters from "./utils/filters"
+import {router} from "./router"
 
 Vue.config.productionTip = false
+
+Object.keys(filters).forEach( (f) => {
+  Vue.filter(f, filters[f])
+
+})
 
 export const eventBus = new Vue({
   data: {
@@ -59,10 +66,15 @@ export const eventBus = new Vue({
     changePage(page) {
       this.page = page;
       this.$emit('update:page', this.page);
+    },
+    addProduct(product) {
+      this.products = [...this.products, {...product, id: this.products.length + 1 + ''}] //permet d'ajouter l'ID dans le tableau products et de le transformer en chaine de caractère
+      this.$emit('update:products', this.products);
     }
   },
 });
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')
