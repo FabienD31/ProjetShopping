@@ -5,9 +5,9 @@
       ><strong>{{ item.price | price }} </strong></span
     >
     <!-- permet d'ajouter un bouton croix -->
-    <button @click="removeProductToCart">
-      <span>&times;</span>
-    </button>
+    <div @click="removeProductToCart">
+      <button class="btn-close"></button>
+    </div>
   </div>
 </template>
 

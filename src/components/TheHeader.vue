@@ -2,9 +2,9 @@
   <transition appear>
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">
-          <img src="../assets/photo copie.png" width="30" height="30" />
-        </a>
+        <div to="" class="navbar-brand">
+          <img src="../assets/logo.png" width="30" height="30" />
+        </div>
         <button class="navbar-toggler " v-trigger-collapse="'collapse'">
           <span class="navbar-toggler-icon"></span>
         </button>
