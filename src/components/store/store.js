@@ -15,11 +15,19 @@ actions: {
       const data = res.data;
       context.commit('addMany', Object.keys(data).map( key => data[key]))
     })
+  },
+  saveOne(context, product) {
+    axios.post('products.json', product).then( () => {
+      context.commit('addOne', product);
+    })
   }
 },
 mutations: {
   addMany(state, products) {
     state.datas = products
+  },
+  addOne(state, product) {
+    state.datas.push(product);
   }
 },
 }

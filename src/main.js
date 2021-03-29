@@ -14,32 +14,6 @@ Object.keys(Filters).forEach( (f) => {
   Vue.filter(f, Filters[f]);
 })
 
-export const eventBus = new Vue({
-  methods: {
-    addProductInCart(product) {
-      if(!this.cart.find(item => item.id === product.id)){
-      this.cart = [...this.cart, product]; //créer un nouveau tableau de panier pour y ajouter à la fin un produit//
-      this.$emit('update:cart', this.cart);// permet d'écouter l'evenement update dans le panier//
-      }
-    },
-    removeProductToCart(item) {
-      this.cart = this.cart.slice().filter(i => i.id !== item.id);//slice() copie le panier et filter() selectionne l'element à supprimer grace à son id
-      this.$emit('update:cart',this.cart);
-    },
-    addProduct(product) {
-      this.$http.post('products.json', product)
-                .then(() => {
-                  this.products = [...this.products, {...product, id: this.products.length + 1 + ''}] //permet d'ajouter l'ID dans le tableau products et de le transformer en chaine de caractère
-                  this.$emit('update:products', this.products)
-                });
-    },
-    addProducts(products) {
-      this.products = products;
-      this.$emit('update:products', this.products)
-    },
-  },
-})
-
 new Vue({
   router,
   store,
