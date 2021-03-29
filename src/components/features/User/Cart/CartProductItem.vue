@@ -5,20 +5,18 @@
       ><strong>{{ item.price | price }} </strong></span
     >
     <!-- permet d'ajouter un bouton croix -->
-    <div @click="removeProductToCart">
+    <div @click="deleteOne(item.id)">
       <button class="btn-close"></button>
     </div>
   </div>
 </template>
 
 <script>
-import { eventBus } from "../../../../main";
+import { mapMutations } from "vuex";
 export default {
   props: ["item"],
   methods: {
-    removeProductToCart() {
-      eventBus.removeProductToCart({ ...this.item }); //idem methode addProductInCart dans ShopProductItem.vue
-    },
+    ...mapMutations("cart", ["deleteOne"]),
   },
 };
 </script>

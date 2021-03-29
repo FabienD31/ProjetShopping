@@ -6,22 +6,12 @@
 
 <script>
 import CartProductList from "./CartProductList.vue";
-import { eventBus } from '../../../../main';
 export default {
+  props: ["cart"],
   components: {
-    CartProductList
+    CartProductList,
   },
-  data() {
-    return {cart: []} 
-  },
-  created() {
-    this.cart = eventBus.cart;
-    eventBus.$on('update:cart', (cart) => {this.cart = cart})
-  }
-}
-
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

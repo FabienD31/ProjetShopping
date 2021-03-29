@@ -1,21 +1,33 @@
 <template>
   <div class="d-flex flex-row">
     <transition name="left" appear>
-      <Shop class="w-75" />
+      <Shop :products="products" class="w-75" />
     </transition>
     <transition name="right" appear>
-      <Cart class="w-25" />
+      <Cart :cart="cart" class="w-25" />
     </transition>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Shop from "./Shop/Shop";
 import Cart from "./Cart/Cart";
 export default {
   components: {
     Shop,
     Cart,
+  },
+  created() {
+    this.$store.dispatch("product/fetchDatas");
+  },
+  computed: {
+    ...mapState("product", {
+      products: "datas", //permets de donner un alias à "datas"
+    }),
+    ...mapState("cart", {
+      cart: "datas", //permets de donner un alias à "datas"
+    }),
   },
 };
 </script>

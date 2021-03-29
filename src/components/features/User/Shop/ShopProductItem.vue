@@ -12,7 +12,7 @@
     </div>
     <div class="d-flex flex-row justify-content-between align-items-center">
       <p class="m-0">{{ product.price | price }}</p>
-      <button @click="addProductInCart" class="btn btn-primary btn-sm">
+      <button @click="addOne(product)" class="btn btn-primary btn-sm">
         Acheter
       </button>
     </div>
@@ -20,14 +20,16 @@
 </template>
 
 <script>
-import { eventBus } from "../../../../main";
+import { mapMutations } from "vuex";
 export default {
   props: ["product"],
   methods: {
-    addProductInCart() {
-      eventBus.addProductInCart({ ...this.product }); // Cette expression permet de copier toutes les propriétés d'un objet dans un nouvel objet littéral grâce à ES6. = spread(object)//
-    },
+    ...mapMutations("cart", ["addOne"]),
   },
+  deleteOne(state, id) {
+    const index = state.datas.findIndex( d => d.id === id);
+    state.datas.splice(index, 1);
+  }
 };
 </script>
 
